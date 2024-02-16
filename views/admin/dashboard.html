@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard</title>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <link rel="stylesheet" href="../../assets/css/admin/dashboard.css">
+</head>
+
+<body>
+    <div class="grid-container">
+
+        <!-- Header -->
+        <header class="header">
+            <div class="menu-icon" onclick="openSidebar()">
+                <span class="material-icons-outlined">menu</span>
+            </div>
+            <div class="header-right d-flex" style="margin-left: auto;">
+                <div class="dropdown">
+                    <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
+                        id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="../../assets/img/user.png" alt="" width="40" class="rounded-circle me-2">
+                    </a>
+                    <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                        <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                        <li>
+                            <hr style="color: black;">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- Sidebar -->
+        <aside id="sidebar" style="z-index: 1;">
+            <div class="sidebar-title mx-auto mb-3">
+                <span class="mt-2 me-2" onclick="closeSidebar()"><svg xmlns="http://www.w3.org/2000/svg" width="18"
+                        height="18" viewBox="0 0 48 48">
+                        <path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"
+                            d="m8 8l32 32M8 40L40 8" /></svg></span>
+                <a href="dashboard.html"
+                    class="h6-title d-flex align-items-center mt-3 mb-md-0 me-md-auto link-light text-decoration-none">
+                    <img src="../../assets/img/pemprovsumbar.png" width="60" height="32" class="img-fluid"
+                        alt="pemprovsumbar">
+                    <h6 class="mt-2 ms-2 fw-bold">Survey Kepuasan<br><span>Masyarakat</span> <br><span>Biro
+                            Organisasi</span> </h6>
+                </a>
+            </div>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li style="padding: 2%;">
+                    <a href="dashboard.html" class="nav-link dashboard mt-1" aria-current="page">
+                        Dashboard
+                    </a>
+                </li>
+                <li class="sidebar-list-item">
+                    <a href="hasilSurvey.html" class="nav-link link-light mt-1">
+                        Hasil Survey
+                    </a>
+                </li>
+                <li class="sidebar-list-item">
+                    <a href="riwayatSurvey.html" class="nav-link link-light mt-1">
+                        Riwayat Survey
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main -->
+        <main class="main-container mb-4">
+            <div class="card div-main-container mx-auto text-center mt-2 mb-4" style="width: 88%">
+                <div class="card-body ps-5 pe-5">
+                    <div class="row align-items-center">
+                        <div class="col-md-7 text-start">
+                            <h1 class="card-titles">Hello Admin !</h1>
+                            <h4 class="mt-3 card-subtitles">Selamat datang di Sistem Survey Kepuasan Masyarakat!</h4>
+                        </div>
+                        <div class="col-md-5">
+                            <img src="../../assets/img/ic-dashboard.png" class="flex-shrink-0 me-3 ms-5 mb-4 img-fluid"
+                                style="width: 88%;" alt="Dashboard">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-5 ps-2 pe-2">
+                <div class="row row-cols-1 row-cols-md-2 g-4">
+                    <div class="col">
+                        <canvas id="jenis_kelamin" style="width:100%;max-width:600px"></canvas>
+
+                        <script>
+                            const a = ["Laki-laki", "Perempuan"];
+                            const b = [44.4, 56.6];
+                            const warnaA = [
+                                "#2D8BBA",
+                                "#F4B9B8"
+                            ];
+
+                            new Chart("jenis_kelamin", {
+                                type: "pie",
+                                data: {
+                                    labels: a,
+                                    datasets: [{
+                                        backgroundColor: warnaA,
+                                        data: b
+                                    }]
+                                },
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Total Responden"
+                                    }
+                                }
+                            });
+                        </script>
+                    </div>
+                    <div class="col">
+                        <canvas id="usia" style="width:100%;max-width:600px"></canvas>
+
+                        <script>
+                            const c = ["51 s.d. 60", "15 s.d. 25", "26 s.d. 35", "36 s.d. 50"];
+                            const d = [22.7, 9.1, 36.4, 31.8];
+                            const warnaB = [
+                                "#938E77",
+                                "#5E3967",
+                                "#DCC5AF",
+                                "#B56C49"
+                            ];
+
+                            new Chart("usia", {
+                                type: "pie",
+                                data: {
+                                    labels: c,
+                                    datasets: [{
+                                        backgroundColor: warnaB,
+                                        data: d
+                                    }]
+                                },
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Usia Responden"
+                                    }
+                                }
+                            });
+                        </script>
+                    </div>
+                    <div class="col">
+                        <canvas id="pendidikan" style="width:100%;max-width:600px"></canvas>
+
+                        <script>
+                            const e = ["S2 Keatas", "SD/SLTP", "SLTA", "D1/D2/D3", "D4/S1"];
+                            const f = [10.8, 10.8, 26.9, 19.4, 32.3];
+                            const warnaC = [
+                                "#1D366D",
+                                "#64C2E4",
+                                "#B14145",
+                                "#F8F1E0",
+                                "#2E6095"
+                            ];
+
+                            new Chart("pendidikan", {
+                                type: "pie",
+                                data: {
+                                    labels: e,
+                                    datasets: [{
+                                        backgroundColor: warnaC,
+                                        data: f
+                                    }]
+                                },
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Jenjang Pendidikan"
+                                    }
+                                }
+                            });
+                        </script>
+                    </div>
+                    <div class="col">
+                        <canvas id="pekerjaan" style="width:100%;max-width:600px"></canvas>
+
+                        <script>
+                            const g = ["Lainnya", "PNS/POLRI/TNI/PPPK", "WIRASWASTA", "SWASTA", "Pelajar/Mahasiswa"];
+                            const h = [10.8, 10.8, 26.9, 19.4, 32.3];
+                            const warnaD = [
+                                "#FF974C",
+                                "#FFD964",
+                                "#4A544A",
+                                "#849D64",
+                                "#EBE6E6"
+                            ];
+
+                            new Chart("pekerjaan", {
+                                type: "pie",
+                                data: {
+                                    labels: c,
+                                    datasets: [{
+                                        backgroundColor: warnaD,
+                                        data: d
+                                    }]
+                                },
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Pekerjaan Responden"
+                                    }
+                                }
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script src="../../assets/js/script.js"></script>
+
+</body>
+
+</html>
